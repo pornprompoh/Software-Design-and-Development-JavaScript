@@ -76,9 +76,52 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('pornprom sukjaimit')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3">ปุ่มที่ 3</button>
+
+    <!-- กล่องข้อความและปุ่มแสดงข้อความ -->
+    <input type="text" id="textBox" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showText()">แสดงข้อความ</button>
+    
+    <p id="output"></p>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('19/2/2568');
+        };
+
+        document.getElementById('btn3').onclick = function() {
+            alert('10.39');
+        };
+
+        function showText() {
+            let text = document.getElementById('textBox').value;
+            document.getElementById('output').innerText = text;
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
+]
 ```
-[รูปผลการทดลองที่ 1]
+[รูปผลการทดลองที่ 1
+![image](https://github.com/user-attachments/assets/e06f39f9-74ee-4726-957d-e3f222e3b51a)
+]
   
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
@@ -134,9 +177,40 @@ let person = {
 
 ### บันทึกผลการทดลอง 2.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ข้อมูลนักศึกษา</title>
+</head>
+<body>
+    <h2>ข้อมูลนักศึกษา</h2>
+    
+    <p><strong>รหัสนักศึกษา:</strong> <span id="studentID"></span></p>
+    <p><strong>ชื่อนักศึกษา:</strong> <span id="studentName"></span></p>
+    <p><strong>คะแนนสอบกลางภาค:</strong> <span id="midtermScore"></span></p>
+    <p><strong>คะแนนสอบปลายภาค:</strong> <span id="finalScore"></span></p>
+
+    <script>
+        let student = {
+            id: "67030323",
+            name: "พรพรม สุขใจมิตร",
+            midterm: 99,
+            final: 99
+        };
+
+        document.getElementById("studentID").innerText = student.id;
+        document.getElementById("studentName").innerText = student.name;
+        document.getElementById("midtermScore").innerText = student.midterm;
+        document.getElementById("finalScore").innerText = student.final;
+    </script>
+</body>
+</html>
+]
 ```
-[รูปผลการทดลองที่ 2.1]
+[รูปผลการทดลองที่ 2.1
+![image](https://github.com/user-attachments/assets/cd68a620-0e57-4635-b769-f9818bf45687)
+]
 
 
 ### 2.2 การดำเนินการทางคณิตศาสตร์
@@ -188,9 +262,74 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คำนวณคะแนนเฉลี่ย</title>
+</head>
+<body>
+    <h2>คำนวณคะแนนเฉลี่ย</h2>
+    
+    <p>คะแนนวิชา 1: <span id="score1"></span></p>
+    <p>คะแนนวิชา 2: <span id="score2"></span></p>
+    <p>คะแนนวิชา 3: <span id="score3"></span></p>
+    
+    <h3>คะแนนเฉลี่ย: <span id="averageScore">-</span></h3>
+
+    <script>
+        let score1 = 85;
+        let score2 = 90;
+        let score3 = 78;
+
+        let average = (score1 + score2 + score3) / 3;
+
+        document.getElementById("score1").innerText = score1;
+        document.getElementById("score2").innerText = score2;
+        document.getElementById("score3").innerText = score3;
+
+        document.getElementById("averageScore").innerText = average.toFixed(2);
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คำนวณราคาสินค้าหลังรวม VAT</title>
+</head>
+<body>
+    <h2>คำนวณราคาสินค้าหลังรวม VAT 7%</h2>
+    
+    <p><strong>ชื่อสินค้า:</strong> <span id="productName"></span></p>
+    <p><strong>ราคาสินค้า:</strong> <span id="productPrice"></span> บาท</p>
+    <h3>ราคาสินค้าหลังรวม VAT 7%: <span id="priceWithVAT">-</span> บาท</h3>
+
+    <script>
+
+        let productName = "โทรศัพท์มือถือ";
+        let productPrice = 15000;
+
+        let vatRate = 0.07; // 7% VAT
+        let priceWithVAT = productPrice + (productPrice * vatRate);
+
+        document.getElementById("productName").innerText = productName;
+        document.getElementById("productPrice").innerText = productPrice;
+
+        document.getElementById("priceWithVAT").innerText = priceWithVAT.toFixed(2);
+    </script>
+</body>
+</html>
+
+]
 ```
-[รูปผลการทดลองที่ 2.2]
+[รูปผลการทดลองที่ 2.2
+![image](https://github.com/user-attachments/assets/a576f804-ee3d-42be-9a81-e2d2da8f5df0)
+![image](https://github.com/user-attachments/assets/68fa7e62-f257-423e-b1d4-a1930910de4e)
+
+]
 
 ### 2.3 การควบคุมการทำงาน
 
@@ -321,9 +460,121 @@ for (let i = 1; i <= 5; i++) {
 
 ### บันทึกผลการทดลอง 2.3
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ตรวจสอบเลขคู่หรือเลขคี่</title>
+</head>
+<body>
+    <h2>ตรวจสอบเลขคู่หรือเลขคี่</h2>
+    
+    <p><strong>ตัวเลขที่กำหนด:</strong> <span id="number"></span></p>
+    <h3>ผลการตรวจสอบ: <span id="result">-</span></h3>
+
+    <script>
+
+        let number = 17;
+
+        let result = (number % 2 === 0) ? "เลขคู่" : "เลขคี่";
+
+        document.getElementById("number").innerText = number;
+        document.getElementById("result").innerText = result;
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แสดงตารางสูตรคูณ</title>
+</head>
+<body>
+    <h2>ตารางสูตรคูณแม่ 2 (ใช้ loop แบบ for)</h2>
+    <ul id="multiplicationTable2"></ul>
+    
+    <h2>ตารางสูตรคูณแม่ 3 (ใช้ loop แบบ while)</h2>
+    <ul id="multiplicationTable3"></ul>
+
+    <script>
+        let table2 = "";
+        for (let i = 1; i <= 12; i++) {
+            table2 += `<li>2 x ${i} = ${2 * i}</li>`;
+        }
+        document.getElementById("multiplicationTable2").innerHTML = table2;
+
+        let table3 = "";
+        let i = 1;
+        while (i <= 12) {
+            table3 += `<li>3 x ${i} = ${3 * i}</li>`;
+            i++;
+        }
+        document.getElementById("multiplicationTable3").innerHTML = table3;
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>นับถอยหลังจาก 10 ถึง 1</title>
+</head>
+<body>
+    <h2>นับถอยหลังจาก 10 ถึง 1</h2>
+    <ul id="countdown"></ul>
+
+    <script>
+        let countdownList = "";
+        for (let i = 10; i >= 1; i--) {
+            countdownList += `<li>${i}</li>`;
+        }
+        document.getElementById("countdown").innerHTML = countdownList;
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ตรวจสอบช่วงวัยตามอายุ</title>
+</head>
+<body>
+    <h2>ตรวจสอบช่วงวัยตามอายุ</h2>
+    
+    <p><strong>อายุที่กำหนด:</strong> <span id="age"></span></p>
+    <h3>ช่วงวัย: <span id="ageGroup">-</span></h3>
+
+    <script>
+        let age = 25;
+
+        let ageGroup;
+        if (age >= 0 && age <= 12) {
+            ageGroup = "วัยเด็ก";
+        } else if (age >= 13 && age <= 19) {
+            ageGroup = "วัยรุ่น";
+        } else if (age >= 20) {
+            ageGroup = "วัยผู้ใหญ่";
+        } else {
+            ageGroup = "ข้อมูลไม่ถูกต้อง";
+        }
+
+        document.getElementById("age").innerText = age;
+        document.getElementById("ageGroup").innerText = ageGroup;
+    </script>
+</body>
+</html>
+
+]
 ```
-[รูปผลการทดลองที่ 2.3]
+[รูปผลการทดลองที่ 2.3
+![image](https://github.com/user-attachments/assets/51bb2b02-e040-4c48-ac5f-bdd28b57ae2a)
+![image](https://github.com/user-attachments/assets/f52f95dc-2e0c-45f1-9a3d-81f5ede4a29d)
+![image](https://github.com/user-attachments/assets/ba3984e0-2b2e-44a7-b4ab-3dd7fcd0b4bb)
+![image](https://github.com/user-attachments/assets/8597b178-872c-44a4-b832-0ee48b34bd93)
+]
 
 ### 2.4 Functions และ Arrow Functions
 
@@ -435,9 +686,113 @@ process(function() {
 
 ### บันทึกผลการทดลอง 2.4.1
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คำนวณ BMI (ดัชนีมวลกาย)</title>
+</head>
+<body>
+    <h2>คำนวณ BMI (ดัชนีมวลกาย)</h2>
+    
+    <p><strong>น้ำหนัก (กิโลกรัม):</strong> <span id="weight"></span></p>
+    <p><strong>ส่วนสูง (เมตร):</strong> <span id="height"></span></p>
+    <h3>ค่า BMI: <span id="bmi"></span></h3>
+
+    <script>
+        function calculateBMI(weight, height) {
+            return weight / (height * height);
+        }
+
+        let weight = 65; // น้ำหนัก (กิโลกรัม)
+        let height = 1.75; // ส่วนสูง (เมตร)
+
+        let bmi = calculateBMI(weight, height);
+
+        document.getElementById("weight").innerText = weight + " กิโลกรัม";
+        document.getElementById("height").innerText = height + " เมตร";
+        document.getElementById("bmi").innerText = bmi.toFixed(2); // แสดงผลค่า BMI 2 ตำแหน่งทศนิยม
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทักทายตามอายุ</title>
+</head>
+<body>
+    <h2>ทักทายตามอายุ</h2>
+    <p><strong>ชื่อ:</strong> <span id="name"></span></p>
+    <p><strong>อายุ:</strong> <span id="age"></span></p>
+    <h3>ข้อความทักทาย: <span id="greeting"></span></h3>
+
+    <script>
+        function greetBasedOnAge(name, age) {
+            let greeting;
+            if (age < 18) {
+                greeting = "สวัสดีครับ/ค่ะ " + name + " เด็กน้อย";
+            } else if (age >= 18 && age < 60) {
+                greeting = "สวัสดีครับ/ค่ะ " + name + " วัยรุ่นทำดี";
+            } else {
+                greeting = "สวัสดีครับ/ค่ะ " + name + " คุณแก่แล้ว";
+            }
+            return greeting;
+        }
+
+        let name = "พรพรม";
+        let age = 18;
+
+        let greetingMessage = greetBasedOnAge(name, age);
+
+        document.getElementById("name").innerText = name;
+        document.getElementById("age").innerText = age;
+        document.getElementById("greeting").innerText = greetingMessage;
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ตรวจสอบรหัสผ่าน</title>
+</head>
+<body>
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+    <label for="password">กรอกรหัสผ่าน: </label>
+    <input type="password" id="password" />
+    <button onclick="checkPasswordLength()">ตรวจสอบรหัสผ่าน</button>
+    <p id="message"></p>
+
+    <script>
+        function checkPasswordLength() {
+            let password = document.getElementById('password').value;
+            let message = document.getElementById('message');
+
+            if (password.length > 8) {
+                message.innerText = "รหัสผ่านถูกต้อง";
+                message.style.color = "green";
+            } else {
+                message.innerText = "รหัสผ่านไม่ถูกต้อง";
+                message.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+]
 ```
-[รูปผลการทดลองที่ 2.4.1]
+[รูปผลการทดลองที่ 2.4.1
+![image](https://github.com/user-attachments/assets/81c36816-dc06-41bf-8afe-e606b6a9ff6b)
+![image](https://github.com/user-attachments/assets/95ba63dc-de27-4838-9385-9ad64dc4ecb1)
+![image](https://github.com/user-attachments/assets/7b94ecf8-8494-4d85-8a9b-d278da26963c)
+![image](https://github.com/user-attachments/assets/512cd879-1410-4e68-ac30-da49408eef55)
+
+]
 
 
 
@@ -478,9 +833,131 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 
 ### บันทึกผลการทดลอง 2.4.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>คำนวณ BMI</title>
+</head>
+<body>
+    <h2>คำนวณ BMI (ดัชนีมวลกาย)</h2>
+
+    <label for="weight">น้ำหนัก (กิโลกรัม): </label>
+    <input type="number" id="weight" placeholder="กรอกน้ำหนัก" required />
+    <br><br>
+
+    <label for="height">ส่วนสูง (เมตร): </label>
+    <input type="number" id="height" step="0.01" placeholder="กรอกส่วนสูง" required />
+    <br><br>
+
+    <button onclick="calculateBMI()">คำนวณ BMI</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <p id="bmiResult"></p>
+
+    <script>
+        const calculateBMI = () => {
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('bmiResult').innerText = 'กรุณากรอกข้อมูลน้ำหนักและส่วนสูงให้ถูกต้อง';
+                return;
+            }
+
+            const bmi = weight / (height ** 2); // คำนวณ BMI
+            document.getElementById('bmiResult').innerText = `ค่า BMI ของคุณคือ: ${bmi.toFixed(2)}`;
+        };
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทักทายตามอายุ</title>
+</head>
+<body>
+    <h2>ทักทายตามอายุ</h2>
+
+    <label for="name">ชื่อ: </label>
+    <input type="text" id="name" placeholder="กรอกชื่อ" required />
+    <br><br>
+
+    <label for="age">อายุ: </label>
+    <input type="number" id="age" placeholder="กรอกอายุ" required />
+    <br><br>
+
+    <button onclick="greetBasedOnAge()">ทักทาย</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <p id="ageGreeting"></p>
+
+    <script>
+
+        const greetBasedOnAge = () => {
+            let name = document.getElementById('name').value;
+            let age = parseInt(document.getElementById('age').value);
+
+            if (isNaN(age) || age <= 0 || name.trim() === '') {
+                document.getElementById('ageGreeting').innerText = 'กรุณากรอกข้อมูลชื่อและอายุให้ถูกต้อง';
+                return;
+            }
+
+            let greeting = (age < 18)
+                ? `สวัสดีครับ/ค่ะ ${name} เด็กๆ`
+                : (age >= 18 && age < 60)
+                    ? `สวัสดีครับ/ค่ะ ${name} กลางๆ`
+                    : `สวัสดีครับ/ค่ะ ${name} แก่แล้ว`;
+
+            document.getElementById('ageGreeting').innerText = greeting;
+        };
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ตรวจสอบรหัสผ่าน</title>
+</head>
+<body>
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+
+    <label for="password">รหัสผ่าน: </label>
+    <input type="password" id="password" placeholder="กรอกรหัสผ่าน" required />
+    <br><br>
+
+    <button onclick="checkPasswordLength()">ตรวจสอบ</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <p id="passwordResult"></p>
+
+    <script>
+        const checkPasswordLength = () => {
+            let password = document.getElementById('password').value;
+
+            if (password.length > 8) {
+                document.getElementById('passwordResult').innerText = 'รหัสผ่านมีความยาวมากกว่า 8 ตัวอักษร';
+            } else {
+                document.getElementById('passwordResult').innerText = 'รหัสผ่านต้องมีความยาวมากกว่า 8 ตัวอักษร';
+            }
+        };
+    </script>
+</body>
+</html>
+
+
+
+]
 ```
-[รูปผลการทดลองที่ 2.4.2]
+[รูปผลการทดลองที่ 2.4.2
+![image](https://github.com/user-attachments/assets/1b13a932-d1e3-40e8-9fc8-d7f3f3a0a5ef)
+![image](https://github.com/user-attachments/assets/c49c9014-5c54-4f6d-b1ff-76fef8316c6c)
+![image](https://github.com/user-attachments/assets/3f7e9213-076f-41ef-bc37-cca8d689dd84)
+
+]
 
 
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
